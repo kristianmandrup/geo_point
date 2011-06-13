@@ -1,8 +1,15 @@
-= geo_point
+h1. Geo Point
 
-Description goes here.
+Adds the concept of a GeoPoint for geo libraries. A GeoPoint encapsulates latitude and longitude, and: 
 
-== Contributing to geo_point
+* a coordinates mode (coord_mode) that can be set to either :lng_lat or :lat_lng
+* calculations such as distance, bearing, midpoint etc.
+* parsing from various String, Hash or Array formats, including from DMS string format, such as "58 38 38N, 003 04 12W"
+
+Using GeoPoints makes it much easier and more efficient to transport location point data and various geo libraries adds additional functionality such as 
+vector operations on top (see fx _geo_vectors_ gem). Enjoy!
+
+h2. Contributing to geo_point
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -12,7 +19,7 @@ Description goes here.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+h2. Copyright
 
 Copyright (c) 2011 Kristian Mandrup. See LICENSE.txt for
 further details.
