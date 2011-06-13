@@ -2,6 +2,54 @@ require 'spec_helper'
 
 # - www.movable-type.co.uk/scripts/latlong.html
 describe GeoPoint do  
+
+  describe 'macros on Core objects' do
+    describe 'Array' do
+      it '#geo_point macro' do
+        point = [1, 2].geo_point
+        point.should be_a(GeoPoint)
+        point.lat.should == 1
+        point.lng.should == 2
+      end
+      
+      it 'should enable #to_coords' do
+        coords = [1, 2].to_coords
+        coords.should be_a(Array)
+        coords.should == [1, 2]
+      end            
+    end
+
+    describe 'String' do
+      it 'should enable #geo_point macro' do
+        point = "1, 2".geo_point
+        point.should be_a(GeoPoint)
+        point.lat.should == 1
+        point.lng.should == 2
+      end
+      
+      it 'should enable #to_coords' do
+        coords = "1, 2".to_coords
+        coords.should be_a(Array)
+        coords.should == [1, 2]
+      end      
+    end
+    
+    describe 'Hash' do    
+      it 'should enable #geo_point macro' do
+        point = {:lat => 1, :lng => 2}.geo_point
+        point.should be_a(GeoPoint)
+        point.lat.should == 1
+        point.lng.should == 2
+      end
+
+      it 'should enable #to_coords' do
+        coords = {:lat => 1, :lng => 2}.to_coords
+        coords.should be_a(Array)
+        coords.should == [1, 2]
+      end
+    end
+  end
+
   describe '#reverse_point' do
     before :each do
       @p = GeoPoint.new -2, 5

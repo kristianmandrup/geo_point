@@ -44,6 +44,7 @@ class GeoPoint
 
   extend ClassMethods
   include Shared
+  include CoreExtension
 
   def coord_mode
     @coord_mode ||= GeoPoint.coord_mode
