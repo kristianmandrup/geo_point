@@ -9,6 +9,83 @@ Adds the concept of a GeoPoint for geo libraries. A GeoPoint encapsulates latitu
 Using GeoPoints makes it much easier and more efficient to transport location point data and various geo libraries adds additional functionality such as 
 vector operations on top (see fx _geo_vectors_ gem). Enjoy!
 
+h2. Install
+
+Gemfile:
+
+@gem 'geo_point'@
+
+$ bundle
+
+h2. Quick start (Usage)
+
+First define the points on the globe you want to work with.
+The GeoPoint initializer is very flexible with regards to the arguments it can handle.
+
+<pre>
+  # factory method on core ruby classes
+  "51 12 03 N, 24 10 02 E".geo_point
+  [51.5136, -0.0983].geo_point
+  {:latitude => 27.3, :longitude => "24 10 02 E"}.geo_point
+
+  # two arguments
+  p1 = GeoPoint.new 51.5136, -0.0983
+  p2 = GeoPoint.new "14 11 01 N", "-0.0983"
+  p3 = GeoPoint.new 51.5136, "24 10 02 E"
+
+  # a String
+  p1 = GeoPoint.new "51.5136, -0.0983"
+  p1 = GeoPoint.new "51.5136, 24 10 02 E"
+  p3 = GeoPoint.new "51.4778, -0.0015"  
+  p1 = GeoPoint.new "51 12 03 N, 24 10 02 E"
+
+  # an Array
+  p2 = GeoPoint.new [51.5136, -0.0983]
+  p2 = GeoPoint.new [51.5136, "24 10 02 E"]
+  p2 = GeoPoint.new [51.5136, {:lon => 27.3}]
+
+  # a Hash
+  p4 = GeoPoint.new {:lat => 27.3, :lng => "24 10 02 E"}
+  p4 = GeoPoint.new {:latitude => 27.3, :longitude => "24 10 02 E"}  
+</pre> 
+
+h2. Utility methods
+
+These are some of the utility methods you can use on a GeoPoint object
+  
+<pre>
+  p1 = GeoPoint.new 5.1, -7
+  p1.lat          # latitude
+  p1.lon          # longitude
+  p1.to_lat_lng   # Array representation of [lat, lng]
+  p1.to_lng_lat   # Array representation of [lng, lat]
+  p1.to_s         # String representation (DMS format)
+  p1.to_coords    # calls either #to_lat_lng or #to_lng_lat depending on global :coord_mode setting
+</pre>  
+
+h2. Global configuration options
+
+<pre>
+  GeoPoint.coord_mode = :lat_lng
+  GeoPoint.coord_mode = :lng_lat
+  
+  GeoPoint.earth_radius_km  = 6379 
+  GeoPoint.earth_radius_km  = 6371 
+</pre>
+
+h2. GeoPoint functionality
+
+A GeoPoint always has the following calculation API available:
+
+* bearing
+* destination
+* distancer
+* intersection
+* midpoint 
+* rhumb (distance)
+
+See the _geo_calc_ gem for details on how to use this Api
+
 h2. Contributing to geo_point
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
