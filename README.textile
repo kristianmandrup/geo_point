@@ -3,7 +3,7 @@ h1. Geo Point
 Adds the concept of a GeoPoint for geo libraries. A GeoPoint encapsulates latitude and longitude, and: 
 
 * a coordinates mode (coord_mode) that can be set to either :lng_lat or :lat_lng
-* calculations such as distance, bearing, midpoint etc.
+* calculations such as: distance_to, bearing_to, midpoint, intersection and destination point
 * parsing from various String, Hash or Array formats, including from DMS string format, such as "58 38 38N, 003 04 12W"
 
 Using GeoPoints makes it much easier and more efficient to transport location point data and various geo libraries adds additional functionality such as 

@@ -29,8 +29,8 @@ class GeoPoint
   # - :mode - coordinates mode, either :lng_lat or :lat_lng, otherwise uses global setting as per GeoPoint.coord_mode
   def initialize *args
     options = args.is_a?(GeoPoint) ? {} : args.last_option
-    earth_radius_km = options[:radius]
-    coord_mode = options[:mode]
+    earth_radius_km = options[:radius] if options[:radius]
+    coord_mode = options[:mode] if options[:mode]
     
     case args.size
     when 1
@@ -127,12 +127,15 @@ class GeoPoint
   end
 
   def to_coords points
-    points.send(:"to_#{coord_mode}")
+    meth = :"to_#{coord_mode}"
+    points.send(meth)
   end
   
   def create_from_one args
-    args = args.first
-    create_from_two *to_coords(args)
+    args = args.first 
+    array = to_coords(args)
+    array = coord_mode == :lng_lat ? array.reverse : array
+    create_from_two *array
   end
   
   def create_from_two lat, lon
