@@ -28,13 +28,13 @@ class GeoPoint
     module Intersection
       # see(#intersection)
       # @returns [GeoPoint] Destination point (null if no unique intersection defined)    
-      def self.intersection_point p1, brng1, p2, brng2    
+      def self.intersection_point p1, brng1, p2, brng2
         GeoPoint.new GeoCalc::Intersection.intersection(p1, brng1, p2, brng2).to_coords
       end
 
       # see(#intersection)
       # @returns [GeoPoint] Destination point (null if no unique intersection defined)    
-      def intersection_point brng1, p2, brng2    
+      def intersection_point brng1, p2, brng2
         GeoPoint.new GeoCalc::Intersection.intersection(self, brng1, p2, brng2).to_coords
       end
     end  

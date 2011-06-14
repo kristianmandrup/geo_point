@@ -7,7 +7,7 @@ Adds the concept of a GeoPoint for geo libraries. A GeoPoint encapsulates latitu
 * parsing from various String, Hash or Array formats, including from DMS string format, such as "58 38 38N, 003 04 12W"
 
 Using GeoPoints makes it much easier and more efficient to transport location point data and various geo libraries adds additional functionality such as 
-vector operations on top (see fx _geo_vectors_ gem). Enjoy!
+vector operations on top (see fx "geo_vectors":https://github.com/kristianmandrup/geo_vectors gem). Enjoy!
 
 h2. Install
 
@@ -77,14 +77,19 @@ h2. GeoPoint functionality
 
 A GeoPoint always has the following calculation API available:
 
-* bearing
-* destination
-* distancer
-* intersection
-* midpoint 
-* rhumb (distance)
+* bearing_to(point)
+* final_bearing_to(point)
+* destination_point(brng, dist)
+* distance_to(point)
+* intersection_point(brng1, p2, brng2)
+* midpoint_to(point) 
 
-See the _geo_calc_ gem for details on how to use this Api
+Rhumb: (see "Rhumb_line":http://en.wikipedia.org/wiki/Rhumb_line)
+* rhumb_distance_to(point)
+* rhumb_bearing_to(point)
+* rhumb_destination_point(brng, dist)
+
+See the "geo_calc":https://github.com/kristianmandrup/geo_calc gem for details on how to use this Api
 
 h2. Contributing to geo_point
  
