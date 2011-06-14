@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{geo_point}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Kristian Mandrup}]
-  s.date = %q{2011-06-13}
+  s.date = %q{2011-06-14}
   s.description = %q{Allows for easy parsing of Strings, Hashes and Arrays into a GeoPoint with lat/long}
   s.email = %q{kmandrup@gmail.com}
   s.extra_rdoc_files = [
@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
     "lib/geo_point/core_extension.rb",
     "lib/geo_point/shared.rb",
     "spec/geo_point/class_methods_spec.rb",
+    "spec/geo_point/coord_mode_spec.rb",
     "spec/geo_point/initializer_spec.rb",
     "spec/geo_point/lat_lon.rb",
     "spec/geo_point_spec.rb",
