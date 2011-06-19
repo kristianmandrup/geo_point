@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
-gem "geo_calc",   '~> 0.7.3'
-gem "geo_units",  '>= 0.2.0'
+gem "geo_calc",   '~> 0.7.4'
+gem "geo_units",  '>= 0.2.1'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
