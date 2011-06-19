@@ -134,7 +134,7 @@ class GeoPoint
   def create_from_one args
     args = args.first
     array = to_coords(args)
-    array = (coord_mode == :lng_lat && args.is_a?(Hash) ) ? array.reverse : array
+    # array = (coord_mode == :lng_lat && args.is_a?(Hash) ) ? array.reverse : array
     create_from_two *array
   end
   
