@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{geo_point}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Kristian Mandrup}]
-  s.date = %q{2011-06-14}
+  s.date = %q{2011-06-19}
   s.description = %q{Allows for easy parsing of Strings, Hashes and Arrays into a GeoPoint with lat/long}
   s.email = %q{kmandrup@gmail.com}
   s.extra_rdoc_files = [
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
     "spec/geo_point/class_methods_spec.rb",
     "spec/geo_point/coord_mode_spec.rb",
     "spec/geo_point/initializer_spec.rb",
-    "spec/geo_point/lat_lon.rb",
+    "spec/geo_point/lat_lon_spec.rb",
     "spec/geo_point_spec.rb",
     "spec/spec_helper.rb"
   ]
@@ -47,23 +47,23 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<geo_calc>, ["~> 0.7.3"])
-      s.add_runtime_dependency(%q<geo_units>, [">= 0.2.0"])
+      s.add_runtime_dependency(%q<geo_calc>, ["~> 0.7.4"])
+      s.add_runtime_dependency(%q<geo_units>, [">= 0.2.1"])
       s.add_development_dependency(%q<rspec>, [">= 2.6.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.6"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
     else
-      s.add_dependency(%q<geo_calc>, ["~> 0.7.3"])
-      s.add_dependency(%q<geo_units>, [">= 0.2.0"])
+      s.add_dependency(%q<geo_calc>, ["~> 0.7.4"])
+      s.add_dependency(%q<geo_units>, [">= 0.2.1"])
       s.add_dependency(%q<rspec>, [">= 2.6.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.6"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_dependency(%q<rcov>, [">= 0"])
     end
   else
-    s.add_dependency(%q<geo_calc>, ["~> 0.7.3"])
-    s.add_dependency(%q<geo_units>, [">= 0.2.0"])
+    s.add_dependency(%q<geo_calc>, ["~> 0.7.4"])
+    s.add_dependency(%q<geo_units>, [">= 0.2.1"])
     s.add_dependency(%q<rspec>, [">= 2.6.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.6"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
