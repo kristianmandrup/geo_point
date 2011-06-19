@@ -34,3 +34,39 @@ describe Array do
     end
   end
 end
+
+describe Hash do  
+  describe '#coord_mode' do
+    it 'should parse as lng, lat' do
+      GeoPoint.coord_mode = :lng_lat        
+      p = {:lng => 2, :lat => 5}.geo_point
+      p.to_lat.should == 5
+      p.to_lng.should == 2
+    end
+    
+    it 'should parse as lat, lng' do
+      GeoPoint.coord_mode = :lat_lng        
+      p = {:lng => 2, :lat => 5}.geo_point
+      p.to_lat.should == 5
+      p.to_lng.should == 2
+    end
+  end
+end
+
+describe String do  
+  describe '#coord_mode' do
+    it 'should parse as lng, lat' do
+      GeoPoint.coord_mode = :lng_lat        
+      p = "2, 5".geo_point
+      p.to_lat.should == 5
+      p.to_lng.should == 2
+    end
+    
+    it 'should parse as lat, lng' do
+      GeoPoint.coord_mode = :lat_lng        
+      p = "2, 5".geo_point
+      p.to_lat.should == 2
+      p.to_lng.should == 5
+    end
+  end
+end

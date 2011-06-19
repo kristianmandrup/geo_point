@@ -5,7 +5,7 @@ class GeoPoint
     end
 
     def geo_point
-      GeoPoint.new to_coords
+      GeoPoint.new self
     end
   end
 end  
