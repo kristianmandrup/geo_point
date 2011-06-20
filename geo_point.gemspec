@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Kristian Mandrup}]
-  s.date = %q{2011-06-19}
+  s.date = %q{2011-06-20}
   s.description = %q{Allows for easy parsing of Strings, Hashes and Arrays into a GeoPoint with lat/long}
   s.email = %q{kmandrup@gmail.com}
   s.extra_rdoc_files = [
