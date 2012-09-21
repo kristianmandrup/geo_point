@@ -128,6 +128,8 @@ class GeoPoint
 
   def to_coords points
     meth = :"to_#{coord_mode}"
+    puts "to_coords #{points.inspect} - #{coord_mode} - #{points.class}"
+    # return points.send(meth) if points.first.kind_of? String
     points.send(meth)
   end
   

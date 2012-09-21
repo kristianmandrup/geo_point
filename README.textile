@@ -17,6 +17,10 @@ Gemfile:
 
 $ bundle
 
+h2. Status Sept 2012
+
+Currently a few of the specs break. Please help Fix. They might be related to geo_calc and/or geo_units gems.
+
 h2. Quick start (Usage)
 
 First define the points on the globe you want to work with.
