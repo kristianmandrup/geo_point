@@ -128,15 +128,12 @@ class GeoPoint
 
   def to_coords points
     meth = :"to_#{coord_mode}"
-    puts "to_coords #{points.inspect} - #{coord_mode} - #{points.class}"
-    # return points.send(meth) if points.first.kind_of? String
     points.send(meth)
   end
   
   def create_from_one args
     args = args.first
     array = to_coords(args)
-    # array = (coord_mode == :lng_lat && args.is_a?(Hash) ) ? array.reverse : array
     create_from_two *array
   end
   
