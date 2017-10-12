@@ -1,14 +1,14 @@
 require 'sugar-high/arguments'
 require 'geo_calc'
- #  Sample usage:                                                                                 
- #    p1 = GeoPoint.new(51.5136, -0.0983)                                                      
- #    p2 = GeoPoint.new(51.4778, -0.0015)                                                      
- #    dist = p1.distance_to(p2)          # in km                                             
- #    brng = p1.bearing_to(p2)           # in degrees clockwise from north                   
- #    ... etc                                                                                     
- # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+ #  Sample usage:
+ #    p1 = GeoPoint.new(51.5136, -0.0983)
+ #    p2 = GeoPoint.new(51.4778, -0.0015)
+ #    dist = p1.distance_to(p2)          # in km
+ #    brng = p1.bearing_to(p2)           # in degrees clockwise from north
+ #    ... etc
+ # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-class GeoPoint  
+class GeoPoint
   autoload :Calc,           'geo_point/calc'
   autoload :Shared,         'geo_point/shared'
   autoload :ClassMethods,   'geo_point/class_methods'
@@ -17,12 +17,17 @@ class GeoPoint
   include GeoPoint::Calc
   include GeoCalc::PrettyPrint
 
-  attr_reader   :lat, :lon  
+  attr_reader   :lat, :lon
+
+  def to_radians!
+    @lat.to_radians!
+    @lon.to_radians!
+  end
 
   # Creates a point on the earth's surface at the supplied latitude / longitude
-  # 
+  #
   # - Numeric latitude in numeric degrees
-  # - Numeric longitude in numeric degrees  
+  # - Numeric longitude in numeric degrees
 
   # Optional options
   # - :radius - earth radius in km
@@ -31,7 +36,7 @@ class GeoPoint
     options = args.is_a?(GeoPoint) ? {} : args.last_option
     earth_radius_km = options[:radius] if options[:radius]
     coord_mode = options[:mode] if options[:mode]
-    
+
     case args.size
     when 1
       create_from_one args
@@ -50,11 +55,11 @@ class GeoPoint
     @coord_mode ||= GeoPoint.coord_mode
   end
 
-  def earth_radius_km  
+  def earth_radius_km
     @earth_radius_km ||= GeoPoint.earth_radius_km  # default
   end
 
-  def lat= value 
+  def lat= value
     @lat = value.to_lat
   end
 
@@ -67,7 +72,7 @@ class GeoPoint
       alias_method :#{sym}, :lon
       alias_method :#{sym}=, :lon=
     }
-  end    
+  end
   alias_method :to_lng, :lng
 
   (Symbol.lat_symbols - [:lat]).each do |sym|
@@ -80,14 +85,14 @@ class GeoPoint
 
   def [] key
     case key
-    when Fixnum   
+    when Fixnum
       raise ArgumentError, "Index must be 0 or 1" if !(0..1).cover?(key)
-      to_a[key] 
+      to_a[key]
     when String, Symbol
       send(key) if respond_to? key
     else
-      raise ArgumentError, "Key must be a Fixnum (index) or a method name"  
-    end    
+      raise ArgumentError, "Key must be a Fixnum (index) or a method name"
+    end
   end
 
   alias_method :to_dms, :to_s
@@ -95,7 +100,7 @@ class GeoPoint
   def reverse_point!
     self.lat = lat * -1
     self.lng = lng * -1
-    self    
+    self
   end
 
   def reverse_point
@@ -113,12 +118,12 @@ class GeoPoint
   def to_a
     send(:"to_#{coord_mode}")
   end
-  
+
   protected
 
   def is_numeric? arg
     arg.is_a? Numeric
-  end  
+  end
 
   alias_method :is_num?, :is_numeric?
 
@@ -130,16 +135,16 @@ class GeoPoint
     meth = :"to_#{coord_mode}"
     points.send(meth)
   end
-  
+
   def create_from_one args
     args = args.first
     array = to_coords(args)
     create_from_two *array
   end
-  
+
   def create_from_two lat, lon
     @lat    = lat.to_lat
     @lon    = lon.to_lng
-  end  
+  end
 end
 
